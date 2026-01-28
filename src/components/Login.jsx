@@ -10,8 +10,8 @@ const Login = ({ onLogin }) => {
   const handleLogin = (e) => {
     e.preventDefault();
     const storedUsers = JSON.parse(localStorage.getItem('user')) || [];
-    const res = await  axios.post("http://localhost:8000/api/login", {email, passowrd})
-    localStorage.setItem('token', res.data.token)
+    // const res = await  axios.post("http://localhost:8000/api/login", {email, passowrd})
+    // localStorage.setItem('token', res.data.token)
 
     const user = storedUsers.find(u => u.email === email && u.password === password);
 
