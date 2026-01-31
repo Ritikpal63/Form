@@ -18,12 +18,8 @@ const Signup = () => {
     if (!formData.name.trim()) {
       errorMsg.name = "Name is required"
     }
-    let mail = JSON.parse(localStorage.getItem("User"))
     if (!formData.email.trim()) {
       errorMsg.email = "Email is required"
-      if (mail.some(user => user.email)) {
-        errorMsg.email = "Email already exists"
-      }
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       errorMsg.email = "Email is invalid"
     }
@@ -34,6 +30,11 @@ const Signup = () => {
     }
     if (!formData.terms) {
       errorMsg.terms = "You must agree to the terms"
+    }
+
+    let mail = JSON.parse(localStorage.getItem("User")) || []
+    if (mail.some(user => user.email === formData.email)) {
+      errorMsg.email = "Email already exists"
     }
     setError(errorMsg)
     return Object.keys(errorMsg).length === 0
