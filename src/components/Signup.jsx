@@ -18,8 +18,12 @@ const Signup = () => {
     if (!formData.name.trim()) {
       errorMsg.name = "Name is required"
     }
+    let mail = JSON.parse(localStorage.getItem("User"))
     if (!formData.email.trim()) {
       errorMsg.email = "Email is required"
+      if (mail.some(user => user.email)) {
+        errorMsg.email = "Email already exists"
+      }
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       errorMsg.email = "Email is invalid"
     }
