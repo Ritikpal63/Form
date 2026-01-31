@@ -32,8 +32,8 @@ const Signup = () => {
       errorMsg.terms = "You must agree to the terms"
     }
 
-    let mail = JSON.parse(localStorage.getItem("User")) || []
-    if (mail.some(user => user.email === formData.email)) {
+    let stored = JSON.parse(localStorage.getItem("user")) || []
+    if (stored.some(u => u.email === formData.email)) {
       errorMsg.email = "Email already exists"
     }
     setError(errorMsg)
