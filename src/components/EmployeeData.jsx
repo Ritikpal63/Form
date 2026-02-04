@@ -1,7 +1,7 @@
 import React from 'react'
 
 const EmployeeData = () => {
-  const data = JSON.parse(localStorage.getItem('user')) || []
+  const data = JSON.parse(localStorage.getItem('Ritik')) || []
   return (
     <>
     <table className='border-collapse border border-gray-400'>
